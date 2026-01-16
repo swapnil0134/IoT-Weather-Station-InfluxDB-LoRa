@@ -19,7 +19,7 @@ lora:
 # InfluxDB Configuration
 influxdb:
   url: "http://localhost:8086"
-  org: "smdh"
+  org: "org_name"
   bucket: "LoRa_Atmosphere"
   token: ""  # Set via environment variable INFLUXDB_TOKEN
   
