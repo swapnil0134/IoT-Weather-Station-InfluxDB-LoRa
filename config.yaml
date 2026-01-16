@@ -1,0 +1,70 @@
+# Weather Monitoring System Configuration
+# Copy this file to config.yaml and adjust settings as needed
+
+# LoRa Radio Configuration
+lora:
+  frequency_mhz: 868.0  # Frequency in MHz for 868 MHz band
+  baudrate: 100000      # Serial baudrate
+  tx_power: 23          # Transmit power in dB
+  spreading_factor: 8   # LoRa spreading factor (7-12)
+  
+  # Pin configuration - adjust according to your hardware
+  pins:
+    cs: "CE1"           # Chip Select pin
+    reset: "D25"        # Reset pin
+    sck: "SCK"          # SPI Clock pin
+    mosi: "MOSI"        # SPI MOSI pin
+    miso: "MISO"        # SPI MISO pin
+
+# InfluxDB Configuration
+influxdb:
+  url: "http://localhost:8086"
+  org: "smdh"
+  bucket: "LoRa_Atmosphere"
+  token: ""  # Set via environment variable INFLUXDB_TOKEN
+  
+# Device Configuration
+device:
+  id: "Device5"
+  handshake_message: "Device5"
+  message_timeout: 10.0  # Timeout for receiving messages in seconds
+  
+# Logging Configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+# File Storage Configuration
+storage:
+  log_base_dir: "/home/swapnil/LoRa_Devices/Weather_Monitoring/Logs"
+  daily_log_file: "log.txt"
+  
+# Data Processing Configuration
+data_processing:
+  field_mappings:
+    "Max_A": "maxAcceleration_m/s2"
+    "RMS_A": "rmsAcceleration_m/s2"
+    "Temp": "temperature_C"
+    "Pressure": "pressure_hPa"
+    "Humidity": "humidity_%"
+    
+  # Data validation ranges (optional but recommended)
+  validation:
+    temperature:
+      min: -40.0
+      max: 85.0
+    pressure:
+      min: 300.0
+      max: 1100.0
+    humidity:
+      min: 0.0
+      max: 100.0
+    acceleration:
+      min: 0.0
+      max: 100.0
+
+# Retry Configuration
+retry:
+  max_attempts: 3
+  backoff_factor: 2
+  initial_delay: 1.0  # seconds

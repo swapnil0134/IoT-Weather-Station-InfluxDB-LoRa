@@ -1,0 +1,31 @@
+# Weather Monitoring System Requirements
+
+# Core Dependencies
+pyyaml>=6.0          # Configuration file parsing
+influxdb-client>=1.38.0  # InfluxDB Python client
+
+# Hardware Dependencies (for Raspberry Pi LoRa modules)
+# Uncomment the following lines when deploying on Raspberry Pi with LoRa hardware
+# adafruit-circuitpython-rfm9x>=1.6.0  # LoRa radio module
+# adafruit-circuitpython-board>=1.0.0  # Board definitions
+# adafruit-circuitpython-busio>=5.2.0  # SPI/I2C communication
+# adafruit-circuitpython-digitalio>=7.3.0  # Digital I/O
+
+# Development and Testing Dependencies
+pytest>=7.4.0        # Testing framework
+pytest-cov>=4.1.0   # Code coverage for pytest
+pytest-mock>=3.11.0  # Mock objects for testing
+black>=23.7.0        # Code formatting
+flake8>=6.0.0        # Code linting
+mypy>=1.5.0          # Type checking
+
+# Optional: For async operations (future enhancement)
+# aiohttp>=3.8.0      # Async HTTP client
+# asyncio-mqtt>=0.13.0  # Async MQTT client
+
+# Optional: For enhanced logging and monitoring
+# structlog>=23.1.0   # Structured logging
+# prometheus-client>=0.17.0  # Prometheus metrics
+
+# Python version requirement: >=3.8
+python-version>=3.8
